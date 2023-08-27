@@ -1,0 +1,52 @@
+
+Q1 db.employee.updateOne({"Designation":"Recruiter"},{$set:{"Designation":"Administrative Officers"}})
+
+Q2 db.employee.updateMany({'project.Pname':['Project-1','Project-2']},{$set:{'project.Phrs':10}})
+
+Q3> db.employee.updateMany({"Ename":/^Ayu/},{$push:{"project":{$each:[{"Pname":"Project-1","Phrs":3},{"Pname":"Project-2","Phrs":4} ] } } } )
+
+Q4 > db.employee.updateMany({salary: {$gt:50000}},{$inc:{salary:2000}})
+
+Q5 > db.employee.updateMany({'Manager.Mname':'Satish'},{$set:{'Manager.Mname':'Tushar'}, $set:{'Manager.Mnum':3333}})
+
+Q6 > db.employee.updateMany({'dept.Dname':"Technical"},{$inc:{'salary':15000}})
+
+Q7 > db.employee.updateMany({'project.Pname':"Project-4"},{$inc:{'project.Phrs':-2}})
+
+Q8 >
+
+Q9 > db.employee.updateMany({'salary': {$lt:60000}},{$set:{'salary':70000}})
+
+Q10 > db.employee.updateMany({$or:[{bonus: {$lt:2000}},{salary: {$lt:60000}},{"dept.Dname": "Management"}]},{$inc{bonus:2000}})
+
+
+Q11 } db.employee.updateMany({$or:[{Designation:"Analyst"},{salary:{$in:[30000,50000,62000]}}]},{$push:{project:{$each:[{Pname:"New Project",Phrs:20},{Pname:"New Project-1",Phrs:22}],$position:2}}})
+
+Q12 > db.employee.updateMany({$and:[{"dept.Dname":"Management"},{"dept.Dlocation":"Udaipur"}]},{$pop:{project:-1}})
+
+Q13 > db.employee.updateMany({$and:[{"project.Pname":"Project-10"},{"project.Phrs":6}]},{$set:{"Designation":"Senior Developer"}})
+
+Q14 > db.employee.updateMany({$or:[{"Ename":"Lakshay Yadav"},{"Ename":"Ritesh Dhiman"}]},{$set:{hobbies:["football","coding","cooking","music"]}})
+
+Q15 >
+db.employee.updateMany({$or:[{$and:[{"project.Pname":"Project-10"},{"project.Phrs":6}]},{$and:[{"project.Pname":"Project-4"},{"project.Phrs":6}]}]},{$set:{"skillset":["HTML","CSS","MERN","Git"]}})
+
+Q16 > > db.employee.updateMany({$and:[{"Ename":/^A/},{"Ename":{$regex:"l$"}}]},{$push:{"Hobbies":"blogging"}})
+
+Q17 
+i. > db.employee.updateMany({$or:[{"project.Pname":"Project-4"},{"project.Pname":"Project-5"}]},{$inc:{salary:10000}})
+ii. > db.employee.updateMany({"dept.Dlocation":"Delhi"},{$inc:{"bonus":-1000,"salary":1000}})
+
+Q18 > db.employee.deleteMany({"project.Pname":"New Project-1"})
+
+Q19 > db.employee.updateMany({"Ename":"Lakshay Yadav"},{$rename:{"Ename":"Lucky"}})
+
+Q20 > db.employee.updateMany({"skillset":"CSS"},{$set:{"skillset.$.CSS":"CSS3"}})
+
+Q21 > db.employee.updateMany({"dept.Dlocation":"Delhi"},{$push:{"skillset":{$each:["Pearl","MongoDB"]}}})
+
+Q22 > db.employee.updateMany({$or:[{"project.Pname":"Project-10"},{"project.Pname":"Project-5"}]},{$pop:{"hobbies":1}})
+
+Q23 > 
+
+Q24 > db.employee.updateMany({$and:[{'skillset':'JAVA'},{'skillset':'GIT'}]},{$push:{project:{$each:[{"Pname":"MyNewProject1","Phrs":10},{"Pname":"MyNewProject2","Phrs":12}]}}})
